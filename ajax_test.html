@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Basic AJAX Demo</title>
+		<link rel="stylesheet" href="/content-style.css">
+    </head>
+    <body>
+        <div class="main" align="center">
+			<h2>Get The Latest Content:</h2>
+            <div class="new-content" id="new-content">
+                <input type="button" class="button" value="Get More Content" id="new-content" onclick="changeButton()" />
+            </div>
+		<script type="text/javascript">
+            function changeButton() {
+                var ajaxCSS = new XMLHttpRequest();
+                ajaxCSS.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("new-content").innerHTML = this.responseText;
+                    }
+                };
+                ajaxCSS.open("GET", "new-content.html")
+                ajaxCSS.send();
+            }
+		</script>
+    </body>
+</html>
